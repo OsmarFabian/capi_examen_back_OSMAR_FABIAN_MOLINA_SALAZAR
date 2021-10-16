@@ -17,5 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => ['cors']], function () {
+    //Rutas a las que se permitirá acceso
+    Route::get('users',[UserController::class, 'index']);
+});
 
-Route::get('users',[UserController::class, 'index']);
